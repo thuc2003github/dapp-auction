@@ -2,34 +2,34 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>DApp Đấu Giá Phi Tập Trung</title>
+  <title>Decentralized Auction DApp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="test.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>🪙 DApp Đấu Giá Phi Tập Trung</h1>
+    <h1>🪙 Decentralized Auction DApp</h1>
 
     <div class="section">
-      <p><strong>🦊 Ví đang dùng:</strong> <span id="account">Chưa kết nối</span></p>
-      <p><strong>🎯 Người dẫn đầu:</strong> <span id="highestBidder">---</span></p>
-      <p><strong>💰 Giá cao nhất:</strong> <span id="highestBid">0</span> ETH</p>
-      <p><strong>⏳ Thời gian còn lại:</strong> <span id="timeLeft">---</span></p>
-      <p><strong>👥 Vai trò:</strong> <span id="role">---</span></p>
+      <p><strong>🦊 Current Wallet:</strong> <span id="account">Chưa kết nối</span></p>
+      <p><strong>👑 Leading Bidder: </strong> <span id="highestBidder">---</span></p>
+      <p><strong>💰 Highest Bid:</strong> <span id="highestBid">0</span> ETH</p>
+      <p><strong>⏳ Time Remaining:</strong> <span id="timeLeft">---</span></p>
+      <p><strong>👥 Role:</strong> <span id="role">---</span></p>
     </div>
 
     <div class="section">
-      <input type="number" step="0.01" id="bidAmount" placeholder="Nhập số ETH muốn đặt giá">
+      <input type="number" step="0.01" id="bidAmount" placeholder="Enter the amount of ETH to bid">
       <div class="button-group">
-        <button onclick="placeBid()">💸 Đặt giá</button>
-        <button onclick="withdraw()">🔁 Rút tiền nếu thua</button>
-        <button onclick="checkTime()">🕒 Kiểm tra thời gian</button>
-        <button id="endAuctionBtn" onclick="endAuction()" style="display:none;">🛑 Kết thúc đấu giá</button>
+        <button onclick="placeBid()">💸 Place Bid</button>
+        <button onclick="withdraw()">🔁 Withdraw if Lost</button>
+        <button onclick="checkTime()">🕒 Check Time</button>
+        <button id="endAuctionBtn" onclick="endAuction()" style="display:none;">🛑 Auction Ended</button>
       </div>
     </div>
 
-    <p id="status" class="status">⏳ Đang kết nối ...</p>
+    <p id="status" class="status">⏳ Loading...</p>
   </div>
 
   <script>
@@ -255,7 +255,7 @@
       try {
         const tx = await contract.bid({ value: ethers.utils.parseEther(eth) });
         await tx.wait();
-        showStatus("✅ Đặt giá thành công!", true);
+        showStatus("✅ Bid placed successfully!", true);
         updateInfo();
       } catch (err) {
         showStatus("❌ Lỗi: " + (err.reason || err.message), false);
@@ -266,9 +266,9 @@
       try {
         const tx = await contract.withdraw();
         await tx.wait();
-        showStatus("✅ Đã rút tiền!", true);
+        showStatus("✅ Funds withdrawn!", true);
       } catch (err) {
-        showStatus("❌ Lỗi khi rút tiền", false);
+        showStatus("❌ Error withdrawing funds", false);
       }
     }
 
@@ -276,19 +276,19 @@
       try {
         const tx = await contract.endAuction();
         await tx.wait();
-        showStatus("✅ Đã kết thúc đấu giá!", true);
+        showStatus("✅ The auction has ended!", true);
         updateInfo();
       } catch (err) {
-        showStatus("❌ Không thể kết thúc: " + (err.reason || err.message), false);
+        showStatus("❌ Unable to end the auction: " + (err.reason || err.message), false);
       }
     }
     async function checkRole() {
   const isOwner = await contract.isOwner();
   if (isOwner) {
-    document.getElementById("role").textContent = "🎩 Bạn là chủ phiên đấu giá.";
+    document.getElementById("role").textContent = "🎩 You are the auction owner.";
     document.getElementById("endAuctionBtn").style.display = "inline-block";
   } else {
-    document.getElementById("role").textContent = "👤 Bạn là người tham gia.";
+    document.getElementById("role").textContent = "👤 You are a participant.";
     document.getElementById("endAuctionBtn").style.display = "none";
   }
 }
