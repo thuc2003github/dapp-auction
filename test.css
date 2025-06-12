@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #121212;
   font-family: 'Segoe UI', sans-serif;
   color: #f0f0f0;
@@ -8,22 +8,55 @@ body {
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
+} */
+ body {
+  /* background-color: #121212; */
+  background-color: #0f0f1a;
+  font-family: 'Segoe UI', sans-serif;
+  color: #e0e0ff;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
+main.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px 40px;
+  background: #000000;
+  /* background: #1a1a2e; */
+  border-radius: 16px;
+  /* box-shadow: 0 0 25px rgba(0, 255, 153, 0.1); */
+  box-shadow: 0 0 25px rgba(162, 89, 255, 0.15);
+}
+footer {
+  background-color: #1e1e1e;
+  padding: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  margin-top: 40px;
+}
+
+/* .container {
   background: #1e1e1e;
   padding: 30px 40px;
   border-radius: 16px;
   max-width: 600px;
   width: 100%;
   box-shadow: 0 0 25px rgba(0, 255, 153, 0.1);
-}
+} */
 
 h1 {
-  color: #00ffa2;
+  color: #a259ff;
   text-align: center;
   margin-bottom: 30px;
   font-size: 26px;
+}
+.logo {
+  width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
 }
 
 .status {
@@ -83,18 +116,20 @@ button:hover {
   justify-content: space-between;
   margin-top: 15px;
 }
-button:nth-child(1) { background: #00ff88; } /* Đặt giá */
-button:nth-child(2) { background: #44d9ff; } /* Rút tiền */
-button:nth-child(3) { background: #ffe066; } /* Kiểm tra thời gian */
-button:nth-child(4) { background: #ff5e5e; } /* Kết thúc đấu giá */
+button:nth-child(1) { background: #4a3057; color: #e0e0ff; }    /* Place Bid */
+button:nth-child(2) { background: #4a3057; color: #e0e0ff; }    /* Withdraw */
+button:nth-child(3) { background: #4a3057; color: #e0e0ff; }    /* Check Time */
+button:nth-child(4) { background: #4a3057; color: #e0e0ff; }    /* End */
 
 
 .section {
   margin-bottom: 25px;
   padding: 20px;
-  background-color: #2a2a2a;
+  /* background-color: #2a2a2a; */
+  background-color: #222242;
   border-radius: 12px;
   box-shadow: inset 0 0 8px rgba(0,255,153,0.08);
+  /* box-shadow: inset 0 0 8px rgba(162, 89, 255, 0.1) */
 }
 
 .section p {
@@ -131,6 +166,6 @@ button:nth-child(4) { background: #ff5e5e; } /* Kết thúc đấu giá */
   text-align: center;
 }
 #bidAmount{
-   width: 40%;
+   width: 96%;
    display: block;
 }

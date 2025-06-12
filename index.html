@@ -8,29 +8,39 @@
   <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <main class="container">
+    <img src="https://itchronicles.com/wp-content/uploads/2022/12/web3-data-storage-1024x680.jpg" alt="logo" class="logo">
     <h1>🪙 Decentralized Auction DApp</h1>
 
     <div class="section">
-      <p><strong>🦊 Current Wallet:</strong> <span id="account">Not connect</span></p>
-      <p><strong>👑 Leading Bidder: </strong> <span id="highestBidder">---</span></p>
+      <p><strong>🦊 Current Wallet:</strong> <span id="account">Not connected</span></p>
+      <p><strong>👑 Leading Bidder:</strong> <span id="highestBidder">---</span></p>
       <p><strong>💰 Highest Bid:</strong> <span id="highestBid">0</span> ETH</p>
       <p><strong>⏳ Time Remaining:</strong> <span id="timeLeft">---</span></p>
       <p><strong>👥 Role:</strong> <span id="role">---</span></p>
     </div>
 
     <div class="section">
-      <input type="number" step="0.01" id="bidAmount" placeholder="Enter the amount of ETH to bid">
+      <input type="number" step="0.01" id="bidAmount" placeholder="Enter your bid in ETH">
       <div class="button-group">
         <button onclick="placeBid()">💸 Place Bid</button>
         <button onclick="withdraw()">🔁 Withdraw if Lost</button>
         <button onclick="checkTime()">🕒 Check Time</button>
-        <button id="endAuctionBtn" onclick="endAuction()" style="display:none;">🛑 Auction Ended</button>
+        <button id="endAuctionBtn" onclick="endAuction()" style="display:none;">🛑 End Auction</button>
       </div>
     </div>
 
     <p id="status" class="status">⏳ Loading...</p>
-  </div>
+<footer>
+    <p>Tác giả: <strong>KMA</strong> | Mạng: <strong>Sepolia Testnet</strong></p>
+    <p>© 2025 | DApp đấu giá phi tập trung</p>
+  </footer>
+  </main>
+
+
+</body>
+
+
 
   <script>
     const CONTRACT_ADDRESS = "0x8b05069A6EbE9e615D1dB967351dC6F96b11e772";
@@ -301,5 +311,4 @@
   
     connectWallet();
   </script>
-</body>
-</html>
+
