@@ -12,7 +12,7 @@
     <h1>🪙 Decentralized Auction DApp</h1>
 
     <div class="section">
-      <p><strong>🦊 Current Wallet:</strong> <span id="account">Chưa kết nối</span></p>
+      <p><strong>🦊 Current Wallet:</strong> <span id="account">Not connect</span></p>
       <p><strong>👑 Leading Bidder: </strong> <span id="highestBidder">---</span></p>
       <p><strong>💰 Highest Bid:</strong> <span id="highestBid">0</span> ETH</p>
       <p><strong>⏳ Time Remaining:</strong> <span id="timeLeft">---</span></p>
@@ -236,7 +236,7 @@
     async function checkTime() {
   try {
     const time = await contract.getRemainingTime();
-    document.getElementById("timeLeft").textContent = `${time} giây`;
+    document.getElementById("timeLeft").textContent = `${time} s`;
   } catch (err) {
     document.getElementById("timeLeft").textContent = "Không lấy được thời gian.";
   }
@@ -247,7 +247,7 @@
       const timeLeft = await contract.getRemainingTime();
       document.getElementById("highestBidder").textContent = bidder;
       document.getElementById("highestBid").textContent = ethers.utils.formatEther(bid);
-      document.getElementById("timeLeft").textContent = timeLeft + " giây";
+      document.getElementById("timeLeft").textContent = timeLeft + " s";
     }
 
     async function placeBid() {
@@ -258,7 +258,7 @@
         showStatus("✅ Bid placed successfully!", true);
         updateInfo();
       } catch (err) {
-        showStatus("❌ Lỗi: " + (err.reason || err.message), false);
+        showStatus("❌ Error: " + (err.reason || err.message), false);
       }
     }
 
