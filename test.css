@@ -166,6 +166,6 @@ button:nth-child(4) { background: #4a3057; color: #e0e0ff; }    /* End */
   text-align: center;
 }
 #bidAmount{
-   width: 96%;
+   width: 95%;
    display: block;
 }
